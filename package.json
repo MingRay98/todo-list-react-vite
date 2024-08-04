@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ntustRay.github.io/todo-list-react-vite",
+  "homepage": "https://ntustray.github.io/todo-list-react-vite/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

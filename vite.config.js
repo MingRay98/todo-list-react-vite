@@ -6,7 +6,6 @@ export default defineConfig({
     react({
       jsxImportSource: '@emotion/react',
       base: '/todo-list-react-vite/',
-      assetsDir: 'assets',
     }),
   ],
 });
