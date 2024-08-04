@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useReducer, useEffect} from 'react';
+import React, {createContext, useContext, useReducer, useEffect, useLayoutEffect} from 'react';
 
 // initial state
 const initialState = {
@@ -15,6 +15,11 @@ const taskReducer = (state, action) => {
       return {
         ...state,
         tasks: [...state.tasks, {...action.payload, id: Date.now(), completed: false, createdAt: new Date()}],
+      };
+    case 'GET_TASKS_FROM_LOCAL_STORAGE':
+      return {
+        ...state,
+        tasks: [...state.tasks, action.payload],
       };
     case 'UPDATE_TASK':
       return {
@@ -54,10 +59,12 @@ export const TaskProvider = ({children}) => {
   const [state, dispatch] = useReducer(taskReducer, initialState);
 
   // load tasks from localStorage
-  useEffect(() => {
-    const savedTasks = localStorage.getItem('tasks');
-    if (savedTasks) {
-      dispatch({type: 'SET_TASKS', payload: JSON.parse(savedTasks)});
+  useLayoutEffect(() => {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    if (tasks) {
+      tasks.forEach(task => {
+        dispatch({type: 'GET_TASKS_FROM_LOCAL_STORAGE', payload: task});
+      });
     }
   }, []);
 
