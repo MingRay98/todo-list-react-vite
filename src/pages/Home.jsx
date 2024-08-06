@@ -8,6 +8,14 @@ const HomeContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0px;
+  }
 `;
 
 const Home = () => {

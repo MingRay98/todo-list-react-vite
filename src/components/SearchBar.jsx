@@ -6,6 +6,8 @@ const SearchContainer = styled.div`
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  width: 90%;
+  flex-wrap: wrap;
 `;
 
 const Input = styled.input`

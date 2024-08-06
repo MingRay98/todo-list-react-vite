@@ -7,6 +7,8 @@ const Form = styled.form`
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
+  width: 90%;
+  flex-shrink: 0;
 `;
 
 const Input = styled.input`
@@ -19,6 +21,15 @@ const TextArea = styled.textarea`
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  height: 100px;
+  resize: vertical;
+
+  @media (max-width: 768px) {
+    height: 125px;
+  }
+  @media (max-width: 576px) {
+    height: 150px;
+  }
 `;
 
 const Button = styled.button`
@@ -37,7 +48,7 @@ const Button = styled.button`
 const TaskForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const { addTask } = useTasks();
+  const {addTask} = useTasks();
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -3,10 +3,24 @@ import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 const SidebarContainer = styled.div`
-  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
   padding: 20px;
+  width: 25%;
+  max-width: 300px;
+  font-size: 18px;
+
+  @media (max-width: 768px) {
+    max-width: 200px;
+    font-size: 16px;
+  }
+  @media (max-width: 576px) {
+    padding: 10px;
+    font-size: 14px;
+  }
 `;
 
 const NavList = styled.ul`
@@ -21,7 +35,6 @@ const NavItem = styled.li`
 const NavLink = styled(Link)`
   text-decoration: none;
   color: #333;
-  font-size: 18px;
 
   &:hover {
     color: #007bff;
