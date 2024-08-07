@@ -18,7 +18,7 @@ link: <https://ntustray.github.io/todo-list-react-vite/>
 
 ### Overview
 
-This project uses react frontend and vite to build an easy adn extendable todo list system.
+This project uses react frontend and vite to build an easy and extendable todo list system.
 
 ### Tech Stack
 
@@ -26,10 +26,10 @@ This project uses react frontend and vite to build an easy adn extendable todo l
 - **Vite 5.3**: Serves as the development server and build tool, providing a fast development experience.
 - **Emotion 11.13**: Used for CSS-in-JS solution, making it easy to manage and apply dynamic styles.
 - **Jest 29.7**: Used for unit testing to ensure code reliability if necessary
-- **Testing Library 16.0**: Provides better testing utilities with a focus on user interactions.
+- **Testing Library 16.0**: Provides better testing utilities focusing on user interactions.
 - **ESLint 8.57**: Used for code quality and consistency checks.
 - **npm and yarn**: Used for package management.
-- **gh-pages** : Used for deploying the project to GitHub Pages.
+- **gh-pages**: Used for deploying the project to GitHub Pages.
 
 ### Folder and Files
 
