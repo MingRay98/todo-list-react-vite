@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from '@emotion/styled';
-import { useTasks } from '../contexts/TaskContext';
+import {useTasks} from '../contexts/TaskContext';
 
 const TaskItemContainer = styled.div`
+  position: relative;
   background-color: ${props => props.completed ? '#e6ffe6' : '#f9f9f9'};
   border: 1px solid #ddd;
   padding: 10px;
@@ -14,11 +15,6 @@ const TaskTitle = styled.h3`
   margin: 0 0 5px 0;
   display: flex;
   align-items: center;
-`;
-
-const CompletionIcon = styled.span`
-  color: green;
-  margin-right: 5px;
 `;
 
 const TaskContent = styled.p`
@@ -54,19 +50,45 @@ const EditInput = styled.input`
   border-radius: 4px;
 `;
 
-const TaskItem = ({ task }) => {
-  const { toggleTask, deleteTask, updateTask } = useTasks();
+const CreatedAt = styled.span`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.8rem;
+  color: #666;
+`;
+
+const CheckBox = styled.span`
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 20px;
+  margin-right: 5px;
+  cursor: pointer;
+  user-select: none;
+  color: ${props => props.completed ? 'green' : 'transparent'};
+  :hover {
+    background-color: #f9f9f9;
+  }
+  `;
+
+const TaskItem = ({task}) => {
+  const {toggleTask, deleteTask, updateTask} = useTasks();
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);
   const [editedContent, setEditedContent] = useState(task.content);
 
   const handleEdit = () => {
-    updateTask(task.id, { title: editedTitle, content: editedContent });
+    updateTask(task.id, {title: editedTitle, content: editedContent});
     setIsEditing(false);
   };
 
   return (
     <TaskItemContainer completed={task.completed}>
+      <CreatedAt>{new Date(task.createdAt).toLocaleString()}</CreatedAt>
       {isEditing ? (
         <EditInput
           value={editedTitle}
@@ -75,7 +97,6 @@ const TaskItem = ({ task }) => {
         />
       ) : (
         <TaskTitle>
-          {task.completed && <CompletionIcon>✔</CompletionIcon>}
           {task.title}
         </TaskTitle>
       )}
@@ -90,9 +111,9 @@ const TaskItem = ({ task }) => {
       )}
       <TaskActions>
         <div>
-          <Button onClick={() => toggleTask(task.id)}>
-            {task.completed ? 'Mark Incomplete' : 'Mark Complete'}
-          </Button>
+          <CheckBox completed={task.completed} onClick={() => toggleTask(task.id)}>
+            ✔
+          </CheckBox>
           {isEditing ? (
             <Button onClick={handleEdit}>Save</Button>
           ) : (

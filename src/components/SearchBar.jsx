@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useTasks } from '../contexts/TaskContext';
+import {useTasks} from '../contexts/TaskContext';
 
 const SearchContainer = styled.div`
   display: flex;
@@ -35,13 +35,13 @@ const SearchBar = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <Select value={filter} onChange={(e) => setFilter(e.target.value)}>
+        <option value="uncompleted">Ongoing</option>
+        <option value="completed">Done</option>
         <option value="all">All</option>
-        <option value="completed">Completed</option>
-        <option value="uncompleted">Uncompleted</option>
       </Select>
       <Select value={sortBy} onChange={(e) => setSort(e.target.value)}>
-        <option value="dateDesc">Newest First</option>
-        <option value="dateAsc">Oldest First</option>
+        <option value="dateDesc">Newest</option>
+        <option value="dateAsc">Oldest</option>
       </Select>
     </SearchContainer>
   );

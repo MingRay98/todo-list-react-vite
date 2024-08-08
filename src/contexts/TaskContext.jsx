@@ -3,7 +3,7 @@ import React, {createContext, useContext, useReducer, useEffect, useLayoutEffect
 // initial state
 const initialState = {
   tasks: [],
-  filter: 'all', // 'all', 'completed', 'uncompleted'
+  filter: 'uncompleted', // 'all', 'completed', 'uncompleted'
   sortBy: 'dateDesc', // 'dateAsc', 'dateDesc'
   searchTerm: '',
 };
