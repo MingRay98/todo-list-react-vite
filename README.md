@@ -1,6 +1,7 @@
 ## About
 
 This is a homework for an interview about the todo list system.
+Finished by my another account ntustRay
 
 ### Demo
 
